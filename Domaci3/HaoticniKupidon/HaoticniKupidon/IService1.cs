@@ -19,10 +19,10 @@ namespace HaoticniKupidon
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
-        //
-        // TODO: Add your service operations here
-        //
-        [OperationContract]
+
+       //TODO: Add your service operations here
+
+       [OperationContract]
         void AddClient(string ime, string grad, int godine, string broj);
         void SendLetter(Object source, ElapsedEventArgs e);
     }

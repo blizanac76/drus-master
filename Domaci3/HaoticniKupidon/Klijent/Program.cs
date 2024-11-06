@@ -43,5 +43,4 @@ Console.WriteLine($"Ime: {ime} Grad: {grad} Godine: {godine} Broj Telefona {brTe
 
 
 
-
 Console.ReadKey();
