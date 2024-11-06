@@ -12,14 +12,19 @@ namespace HaoticniKupidon
     
     public class Kupidon
     {
-        public System.Timers.Timer _timer;
+        public static System.Timers.Timer _timer;
         
-        private void SetTimer()
+        internal static void SetTimer()
         {
             _timer = new System.Timers.Timer(1000);
-            _timer.Elapsed += nesto;
+            _timer.Elapsed += Nesto;
             _timer.AutoReset = true;
             _timer.Enabled = true;
+        }
+        internal static void Nesto(Object source, ElapsedEventArgs e)
+        {
+            //nesto sto se radi na svaki tajmer otkucaj
+            //kupidon salje pisma na svaki tajmer otkucaj
         }
 
         
