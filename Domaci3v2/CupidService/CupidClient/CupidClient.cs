@@ -6,12 +6,13 @@ using CupidService;
 
 public class CupidClient : ICupidCallback
 {
-    private ICupidService serviceProxy;
+    private ICupidService? serviceProxy;
 
     public void Run()
     {
         var context = new InstanceContext(this);
         var factory = new DuplexChannelFactory<ICupidService>(context, "CupidServiceEndpoint");
+
 
         serviceProxy = factory.CreateChannel();
 
@@ -20,18 +21,19 @@ public class CupidClient : ICupidCallback
 
     public void RegisterUser()
     {
-        Console.Write("Enter your name: ");
+        Console.Write("Unesite vase ime: ");
         var name = Console.ReadLine();
-        Console.Write("Enter your city: ");
+
+        Console.Write("Unesite vas grad: ");
         var city = Console.ReadLine();
 
         int age;
         do
         {
-            Console.Write("Enter your age: ");
-        } while (!int.TryParse(Console.ReadLine(), out age) || age < 0);
+            Console.Write("Unesite vase godine: ");
+        }while (!int.TryParse(Console.ReadLine(), out age) || age < 0);
 
-        Console.Write("Enter your phone number: ");
+        Console.Write("unesite broj telefona: ");
         var phoneNumber = Console.ReadLine();
 
         var loverboy = new Loverboy { Name = name, City = city, Age = age, PhoneNumber = phoneNumber };
@@ -40,14 +42,14 @@ public class CupidClient : ICupidCallback
 
     public void ReceiveLoveLetter(Loverboy sender, string message)
     {
-        Console.WriteLine($"Love Letter from {sender.Name} in {sender.City}: {message}");
+        Console.WriteLine($"Ljubavno pismo od {sender.Name} iz {sender.City}: {message}");
 
-        if (message != "I'm not interested in meeting")
+        if (message != "Zelim da se upoznamo")
         {
-            Console.WriteLine($"Sender's phone number: {sender.PhoneNumber}");
+            Console.WriteLine($"Broj telefona posaljioca: {sender.PhoneNumber}");
         }
 
-        Console.WriteLine("Press any key to confirm receipt...");
+        Console.WriteLine("Primi posiljku...");
         Console.ReadKey();
         serviceProxy.ConfirmLetterReceived();
     }

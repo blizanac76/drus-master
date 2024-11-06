@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CupidService.cs" />
+    <Compile Include="ICupidCallback.cs" />
     <Compile Include="Loverboy.cs" />
     <Compile Include="ICupidService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

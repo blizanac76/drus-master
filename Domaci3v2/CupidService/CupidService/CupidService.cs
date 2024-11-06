@@ -4,18 +4,20 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
+//using System.Timers;
+using System.Threading;
+
 
 namespace CupidService
 {
     public class CupidService : ICupidService
     {
-        private readonly Dictionary<Loverboy, ICupidCallback> registeredPlayers = new();
+        private readonly Dictionary<Loverboy, ICupidCallback> registeredPlayers = new Dictionary<Loverboy, ICupidCallback>();
         private readonly List<string> messages = new List<string>
     {
-        "I’d like to get to know you",
-        "I’m not interested in meeting",
-        "I’m looking forward to our meeting!"
+        "Zelim da se upoznamo",
+        "Ne zelim da se upoznamo",
+        "Radujem se nasem susretu!"
     };
         private readonly Timer loveLetterTimer;
 
@@ -31,12 +33,12 @@ namespace CupidService
 
             if (registeredPlayers.ContainsKey(loverboy))
             {
-                Console.WriteLine($"Player {loverboy.Name} is already registered.");
+                Console.WriteLine($"Loverboy {loverboy.Name} je vec prijavljen.");
             }
             else
             {
                 registeredPlayers.Add(loverboy, callback);
-                Console.WriteLine($"{loverboy.Name} from {loverboy.City} has registered.");
+                Console.WriteLine($"{loverboy.Name} iz {loverboy.City} je registrovan.");
             }
         }
 
@@ -44,7 +46,6 @@ namespace CupidService
         {
             foreach (var receiver in registeredPlayers.Keys.ToList())
             {
-                // Prevent sending letter to themselves
                 var eligibleSenders = registeredPlayers.Keys.Where(p => p != receiver).ToList();
 
                 if (eligibleSenders.Count == 0) continue;
@@ -59,8 +60,8 @@ namespace CupidService
 
         public void ConfirmLetterReceived()
         {
-            Console.WriteLine("Letter has been confirmed as received.");
-            // Additional logic can be implemented here to handle letter acknowledgment if needed.
+            Console.WriteLine("Pismo poslato");
+           
         }
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace CupidService
 {
-    internal interface ICupidService
+    [ServiceContract]
+    public interface ICupidService
     {
         [OperationContract]
         void InitSinglePerson(Loverboy loverboy);
