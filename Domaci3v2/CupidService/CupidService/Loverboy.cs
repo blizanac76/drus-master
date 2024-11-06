@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CupidService
 {
-    internal class Loverboy
+    public class Loverboy
     {
         [DataMember]
         public string Name { get; set; }
