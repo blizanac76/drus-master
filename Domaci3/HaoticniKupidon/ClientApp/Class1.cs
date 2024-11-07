@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Klijent
+namespace ClientApp
 {
-    public class Program
+    internal class Class1
     {
-        public static void Main(string[] args)
-        {
-            
-
-        }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HaoticniKupidon
+namespace Klijent
 {
-    internal interface IHaoticniKupidonCallback
+    internal class ClientCallback
     {
     }
 }

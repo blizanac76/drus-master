@@ -5,6 +5,9 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
+
+//Servisna aplikacijaima metodu za Inicijalizaciju osobe i metodu za obavestavanje prijema pisma.
+//Ugovor
 namespace CupidService
 {
     [ServiceContract]

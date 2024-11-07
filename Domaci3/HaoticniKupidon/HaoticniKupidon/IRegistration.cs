@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.ServiceModel;
 
 namespace HaoticniKupidon
 {
     [ServiceContract]
-    public interface IHaoticniKupidon
+    public interface IRegistration
     {
         [OperationContract]
-        void SlanjePisma();
+        bool InitSinglePerson(string name, string city, int age, string phoneNumber);
 
-        [OperationContract]
-        void initSinglePerson();
+
+
 
     }
 }
+
