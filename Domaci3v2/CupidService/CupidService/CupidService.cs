@@ -12,18 +12,21 @@ namespace CupidService
 {
     public class CupidService : ICupidService
     {
-        private readonly Dictionary<Loverboy, ICupidCallback> registeredPlayers = new Dictionary<Loverboy, ICupidCallback>();
-        private readonly List<string> messages = new List<string>
+        //Korisnici su smesteni u recnik
+        private  Dictionary<Loverboy, ICupidCallback> registeredLoverboys = new Dictionary<Loverboy, ICupidCallback>();
+        //Poruke koje Loverboy ispisuje drugom Loverboyu
+        private  List<string> messages = new List<string>
     {
         "Zelim da se upoznamo",
         "Ne zelim da se upoznamo",
         "Radujem se nasem susretu!"
     };
-        private readonly Timer loveLetterTimer;
+        //timer kojim se Ljubavnopismo svaki sekund salje
+        public Timer loveLetterTimer;
 
         public CupidService()
         {
-            // Start sending love letters every minute
+            // konstruktor
             loveLetterTimer = new Timer(SendLoveLetter, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
         }
 
@@ -31,29 +34,31 @@ namespace CupidService
         {
             var callback = OperationContext.Current.GetCallbackChannel<ICupidCallback>();
 
-            if (registeredPlayers.ContainsKey(loverboy))
+            if (registeredLoverboys.ContainsKey(loverboy))
             {
                 Console.WriteLine($"Loverboy {loverboy.Name} je vec prijavljen.");
             }
             else
             {
-                registeredPlayers.Add(loverboy, callback);
+                registeredLoverboys.Add(loverboy, callback);
                 Console.WriteLine($"{loverboy.Name} iz {loverboy.City} je registrovan.");
             }
         }
 
         private void SendLoveLetter(object state)
         {
-            foreach (var receiver in registeredPlayers.Keys.ToList())
+
+            foreach (var receiver in registeredLoverboys.Keys.ToList())
             {
-                var eligibleSenders = registeredPlayers.Keys.Where(p => p != receiver).ToList();
+                //da ne salje samom sebi, pravi se nova lista bez tog loverboya
+                var dostupniLoverboyi = registeredLoverboys.Keys.Where(p => p != receiver).ToList();
 
-                if (eligibleSenders.Count == 0) continue;
+                if (dostupniLoverboyi.Count == 0) continue;
 
-                var sender = eligibleSenders[new Random().Next(eligibleSenders.Count)];
+                var sender = dostupniLoverboyi[new Random().Next(dostupniLoverboyi.Count)];
                 var message = messages[new Random().Next(messages.Count)];
 
-                var callback = registeredPlayers[receiver];
+                var callback = registeredLoverboys[receiver];
                 callback.ReceiveLoveLetter(sender, message);
             }
         }

@@ -8,6 +8,8 @@ using System.ServiceModel;
 
 namespace CupidService
 {
+    [ServiceContract]
+    //Callback servisa da je primio pismo Loverboya
     public interface ICupidCallback
     {
         [OperationContract(IsOneWay = true)]

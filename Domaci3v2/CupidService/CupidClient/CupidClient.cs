@@ -34,9 +34,9 @@ public class CupidClient : ICupidCallback
         }while (!int.TryParse(Console.ReadLine(), out age) || age < 0);
 
         Console.Write("unesite broj telefona: ");
-        var phoneNumber = Console.ReadLine();
+        var number_phone = Console.ReadLine();
 
-        var loverboy = new Loverboy { Name = name, City = city, Age = age, PhoneNumber = phoneNumber };
+        var loverboy = new Loverboy { Name = name, City = city, Age = age, PhoneNumber = number_phone };
         serviceProxy.InitSinglePerson(loverboy);
     }
 
