@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Klijent
+namespace HaoticniKupidon
 {
-    public class Program
+    internal interface IHaoticniKupidonCallback
     {
-        public static void Main(string[] args)
-        {
-            
-
-        }
     }
 }
