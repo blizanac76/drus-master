@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="a83d70cb-ac8a-42b0-a94b-8491f56d64db" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50927/Kupidon.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Kupidon.xsd" MetadataType="Schema" ID="90673699-0d30-43d3-8ae2-bd533902d4be" SourceId="1" SourceUrl="http://localhost:50927/Kupidon.svc?xsd=xsd2" />
+    <MetadataFile FileName="Kupidon.disco" MetadataType="Disco" ID="114833ae-e5c5-4281-ad19-9114317c56c2" SourceId="1" SourceUrl="http://localhost:50927/Kupidon.svc?disco" />
+    <MetadataFile FileName="Kupidon1.xsd" MetadataType="Schema" ID="a8460222-7e19-450f-a806-8dc18cb749b4" SourceId="1" SourceUrl="http://localhost:50927/Kupidon.svc?xsd=xsd1" />
+    <MetadataFile FileName="Kupidon2.xsd" MetadataType="Schema" ID="cab37a4e-c91a-4dc5-9545-ee75b91cb371" SourceId="1" SourceUrl="http://localhost:50927/Kupidon.svc?xsd=xsd0" />
+    <MetadataFile FileName="Kupidon.wsdl" MetadataType="Wsdl" ID="4c3f5abb-86da-40ff-aa4b-e0e8e0794f2b" SourceId="1" SourceUrl="http://localhost:50927/Kupidon.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
