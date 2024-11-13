@@ -1,0 +1,27 @@
+# Ignore Visual Studio temporary files, build results, and folder-specific files for C#
+
+## Ignore build results
+bin/
+obj/
+
+## Ignore Visual Studio project files
+.vs/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Ignore Visual Studio Code settings
+.vscode/
+.vs/
+appsettings.json
