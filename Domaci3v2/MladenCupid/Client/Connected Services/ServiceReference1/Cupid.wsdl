@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="Cupid" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" targetNamespace="Cupid" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="Cupid/Imports">
+      <xsd:import namespace="Cupid" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFLib" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICupid_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_InitSinglePerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitSinglePerson" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_LetterResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:LetterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_PrintShit_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:PrintShit" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_InitSinglePersonR_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:InitSinglePersonR" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_Announce_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Announce" />
+  </wsdl:message>
+  <wsdl:message name="ICupid_GetLetter_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetLetter" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ICupid">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetData">
+      <wsdl:input wsaw:Action="Cupid/ICupid/GetData" message="tns:ICupid_GetData_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="InitSinglePerson">
+      <wsdl:input wsaw:Action="Cupid/ICupid/InitSinglePerson" message="tns:ICupid_InitSinglePerson_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="LetterResponse">
+      <wsdl:input wsaw:Action="Cupid/ICupid/LetterResponse" message="tns:ICupid_LetterResponse_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="PrintShit">
+      <wsdl:output wsaw:Action="Cupid/ICupid/PrintShit" message="tns:ICupid_PrintShit_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="InitSinglePersonR">
+      <wsdl:output wsaw:Action="Cupid/ICupid/InitSinglePersonR" message="tns:ICupid_InitSinglePersonR_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Announce">
+      <wsdl:output wsaw:Action="Cupid/ICupid/Announce" message="tns:ICupid_Announce_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetLetter">
+      <wsdl:output wsaw:Action="Cupid/ICupid/GetLetter" message="tns:ICupid_GetLetter_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
