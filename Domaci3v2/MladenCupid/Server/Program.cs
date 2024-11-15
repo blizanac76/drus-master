@@ -10,11 +10,13 @@ namespace Klijenrt
     private static Timer _timer;
     static void Main(string[] args)
     {
+      //hpodesavanje servisa
+      //host adresa, endpointovi,metapodaci,
       // See https://aka.ms/new-console-template for more information
       Uri baseAddress = new Uri("http://localhost:8005/WCFLib/");
 
       ServiceHost selfHost = new ServiceHost(typeof(Cupid), baseAddress);
-
+      //endpoint za dvostranu komunikaciju 
       selfHost.AddServiceEndpoint(typeof(ICupid), new WSDualHttpBinding(), "Cupid");
 
       ServiceMetadataBehavior smb = new ServiceMetadataBehavior();

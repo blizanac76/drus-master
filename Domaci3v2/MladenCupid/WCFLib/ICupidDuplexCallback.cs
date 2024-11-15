@@ -4,11 +4,12 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-
+//[Operationontract] = dostupno Klijentima
 namespace WCFLib
 {
   public interface ICupidDuplexCallback
   {
+    //sluze za slanje poruka i feedback korisnicima (npr ljubavna pisma ili feedback za registracija)
     [OperationContract(IsOneWay = true)]
     void PrintShit(string value);
 

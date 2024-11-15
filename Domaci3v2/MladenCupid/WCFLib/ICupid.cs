@@ -15,7 +15,7 @@ namespace WCFLib
     void GetData(int value);
     [OperationContract(IsOneWay =true)]
     void InitSinglePerson(User user);
-    // This could actually be just string and then search dict like that but w/e , do it later as optimizaitonm
+    
     [OperationContract(IsOneWay = true)]
     void LetterResponse(int value, string responseTo);
 

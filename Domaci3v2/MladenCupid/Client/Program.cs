@@ -19,10 +19,11 @@ namespace Client
       bool test = true;
       //client.GetData(10);
       User u = null;
-
+      //korisnik sa rand id
       if (test)
       {
         Random r = new Random();
+        //neki id
         string id = r.Next(100000000, 900000000).ToString();
         u = new User();
         u.Ime = $"Mladen{id}";
@@ -77,7 +78,10 @@ namespace Client
       //Console.WriteLine($"Ime: {ime}, Grad: {grad}, Godine: {godine}, BrTelefona: {broj}");
       Console.ReadKey();
     }
+    //callback  za asinhronu komunikaciju. CallBackHandler implementira interfejs ICupidCallback
+    //koji se koristi da obdradi odgovore koje servis salje klijentima ljubavna pisma , registracija
 
+    //
     public class CallBackHandler : ICupidCallback
     {
       private CupidClient client;
@@ -86,18 +90,21 @@ namespace Client
         var instanceContext = new InstanceContext(this);
         client = new CupidClient(instanceContext);
       }
-
+    //poziva initsingle person i registruje korisnika
       public void Start(User u)
       {
         client.InitSinglePerson(u);
       }
+     //jej novi korisnik je dosao
       public void Announce(string name)
       {
         Console.WriteLine($"**************** {name} se pridruzio! **************");
       }
-
+      //ovde korisnik prima ljubavno pismo od servisa
       public void GetLetter(User u)
       {
+        //malo asinhrono sto da ne
+        //prikazuju  se podaci o drugom korisniku i omogucava mu da odgovori na pismo
         ThreadPool.QueueUserWorkItem(_ =>
         {
           Console.WriteLine($"{u.Ime} {u.Godine} iz {u.Grad}. Broj telefona: {u.BrTelefona}");
@@ -117,7 +124,7 @@ namespace Client
           client.LetterResponse(Convert.ToInt32(odgS), u.Ime);
         });
       }
-
+      //R kao response. jel dobra registracija da/ne
       public void InitSinglePersonR(bool success)
       {
         State.loggedIn = success;
@@ -126,7 +133,7 @@ namespace Client
         Console.WriteLine(res);
 
       }
-
+    
       public void PrintShit(string value)
       {
         Console.WriteLine(value);

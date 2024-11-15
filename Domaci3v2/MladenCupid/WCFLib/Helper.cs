@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WCFLib
 {
+  //validacija korisnika (ime, grad, godine i broj telefona)
+  //da ne unese nesto lose
+
   public class Helper
   {
     public bool ValidateUser(ref User user)

@@ -11,6 +11,7 @@ using System.Timers;
 
 namespace WCFLib
 {
+  //upravlja tajmerom za slanje ljubavnih pisama na svakih 10 sekundi, minut je predugo
   public static class Loop
   {
     private static System.Timers.Timer _timer = null;
@@ -20,6 +21,7 @@ namespace WCFLib
     {
       //throw new Exception();
     }
+    //start tajmera
     public static void Start()
     { 
       if (timerStarted) return;
@@ -27,11 +29,12 @@ namespace WCFLib
       {
         if (timerStarted) return;
         StartTimer();
+        //ne nikako
         //throw new Exception();
         timerStarted = true;
       }
     }
-
+    // kad istekne vreme ovo se desi - nasumicnom korisniku se salje ljubavno pismo
     private static void ElapsedTimer(object sender, ElapsedEventArgs e)
     {
      // throw new Exception();
@@ -39,7 +42,7 @@ namespace WCFLib
       ThreadPool.QueueUserWorkItem(_ =>
       {
         Random r = new Random();
-        // Not good for perf or maybe acceptable?
+        // 
         //Debugger.Launch();
         var sr = AppDomain.CurrentDomain.FriendlyName;
         List<User> userList = DB.Users.Keys.ToList();
@@ -50,18 +53,18 @@ namespace WCFLib
         {
           if (!DB.Users[user].Available)
             continue;
-
+          // :) 
           //int i = r.Next(userList.Count - 1);
           //if (userList[i] == user)
           //  i = (userList.Count < (i + 1)) ? i : i - 1;
           //userList[i] = user;
-          // ovo bi moglo lepse, previse accessa i novi objekat
+          // ovo bi moglo lepse, previse accessa i novi objekat ...
           DB.Users[user].Callback.GetLetter(user);
           DB.Users[user] = new Data(DB.Users[user].Callback, false);
         }
       });
     }
-
+    //inicijalizacija tajmera
     static void StartTimer()
     {
       _timer = new System.Timers.Timer(1000 * 10);

@@ -18,12 +18,14 @@ namespace WCFLib
   {
     
     ICupidDuplexCallback callback = null;
+    //koristi se za slanje ljubavnih pisama na intercalu
     System.Timers.Timer _timer = null;
     int i = 0;
+    // Helper sluzi za validaciju podataka novog usera
     Helper helper = null;
-
+    //trenutni korisnik
     private User _thisUser = null;
-    
+    //inicijalizuje se callback i helper klasa pokrece se loop za matchmaking gde se upoznaju ljudi
     public Cupid()
     {
       var curr = OperationContext.Current;
@@ -41,8 +43,9 @@ namespace WCFLib
       
       //File.WriteAllText("debug.txt", "before loop");
       Loop.Start();
+      //da li su dobri podaci
       bool res = helper.ValidateUser(ref user);
-      // user exists
+      // postoji korsinik
       if (_thisUser != null)
         res = false;
       callback.InitSinglePersonR(res);
@@ -52,10 +55,13 @@ namespace WCFLib
 
       _thisUser = new User();
       _thisUser.BrTelefona = user.BrTelefona;
-      // Optimize this, either copy or use better data structure?
-      // Ovo nije obavezno, nego samo kul tako da bude
+      // moze se optimizovati, 
+      // Ovo nije obavezno, nego samo kul tako da bude za koji bod
+      //da se registracija korisnika izvrsi asinhrono ne blokira main nit
+      //
       ThreadPool.QueueUserWorkItem(_ =>
       {
+          //dodavanje u bazu db korisnika (db.users)
         foreach (KeyValuePair<User, Data> kvp in DB.Users)
         {
           kvp.Value.Callback.Announce(user.Ime);
@@ -65,9 +71,13 @@ namespace WCFLib
       });
     }
 
+    // odgovor na ljubavno pismo
     public void LetterResponse(int value, string responseTo)
     {
-      // have 0 -2 values but for now just leave it be
+      // value je odgovor na pismo, 
+      //glup nacin ali jednostavan
+      //korisnik ovako potvrdjuje da li je dostupan za nova pisma
+      //responseTo ipak ne treba :)
       
       if (value < 0 || value > 2)
         return;
