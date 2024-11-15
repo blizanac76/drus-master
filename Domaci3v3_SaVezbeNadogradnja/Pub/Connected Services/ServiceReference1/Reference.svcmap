@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="280b09bc-0f02-414b-aec0-890e7b7c854e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:60368/PubSub.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PubSub2.xsd" MetadataType="Schema" ID="a89920f8-860c-4a74-8b7d-a2c20bbd33e5" SourceId="1" SourceUrl="http://localhost:60368/PubSub.svc?xsd=xsd2" />
+    <MetadataFile FileName="PubSub.disco" MetadataType="Disco" ID="6ab47cd1-aa26-4b08-bfef-0633a1f5ab2e" SourceId="1" SourceUrl="http://localhost:60368/PubSub.svc?disco" />
+    <MetadataFile FileName="PubSub.xsd" MetadataType="Schema" ID="71223242-1f43-4c76-96fc-9e736d8872e8" SourceId="1" SourceUrl="http://localhost:60368/PubSub.svc?xsd=xsd0" />
+    <MetadataFile FileName="PubSub1.xsd" MetadataType="Schema" ID="d7a1d791-8f23-4a5f-8975-11a3dfe92bb5" SourceId="1" SourceUrl="http://localhost:60368/PubSub.svc?xsd=xsd1" />
+    <MetadataFile FileName="PubSub.wsdl" MetadataType="Wsdl" ID="bc6564e7-7274-4741-b56a-7a40dd37ddc3" SourceId="1" SourceUrl="http://localhost:60368/PubSub.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
