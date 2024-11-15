@@ -12,15 +12,17 @@ namespace PubSubApp
     
     public class PubSub : IPub, ISub
     {
+        //
         delegate void MessageDeleagte(string message);
         static event MessageDeleagte MessageArrivedEvent;
-
+        //delegat za metodu sa string i korisnik paramterima
         delegate void MessageDeleagte2(string message, Korisnik k);
         static event MessageDeleagte2 MessageArrivedEvent2;
 
         Random rng = new Random();
 
         public static Dictionary<string, string> Users = new Dictionary<string, string>();
+        //niz korisnika
         public static Dictionary<int, Korisnik> Korisnici = new Dictionary<int, Korisnik>();
         public void InitSub(string username, string password)
         {
@@ -30,8 +32,14 @@ namespace PubSubApp
                 MessageArrivedEvent += OperationContext.Current.GetCallbackChannel<ICallback>().MessageArrived;
             }
         }
+        //
         public void InitSinglePerson(string name, string surname, string cuty, string phone, int age)
         {
+            //dodavanje novog korisnika
+            //generise se random id neki za listu
+            //sluzi da se ne salje istom korisniku poruka od samog sebe
+            //moze da bude ispravno za mali borj korisnika
+           
             Console.WriteLine("InitSinglePerson()");
             int rand1 = rng.Next(10000);
             Korisnik k = new Korisnik
@@ -82,7 +90,7 @@ namespace PubSubApp
 
             MessageArrivedEvent?.Invoke($"Poruka: {message} arrived at {DateTime.Now}.");
         }
-
+        //slanje poruke korisniku, poruka moze biti jedna od ove 3
         public void SendMessage2(string message, Korisnik k)
         {
             string[] poruke =
@@ -94,15 +102,16 @@ namespace PubSubApp
             Random rand = new Random();
             string poruka = poruke[rand.Next(poruke.Length)];
 
-            // Now invoke the correct MessageArrivedEvent2 event
+            // invoke ovog eventa stringom i korisnikom
             MessageArrivedEvent2?.Invoke($"Poruka: {poruka}", k);
         }
 
         private string lastUserPhone = ""; // pracenje zadnjeg korisnika
         public Korisnik GetRandomUser(string currentUserPhone)
         {
-            Console.WriteLine("Bira se nasumicni korisnik...");
 
+            Console.WriteLine("Bira se nasumicni korisnik...");
+            //pokusaj da eliminisem da se istom korisniku salje svoj podatak
             var otherUsers = Korisnici.Where(k => k.Value.phone != currentUserPhone).ToList();
             otherUsers = otherUsers.Where(k => k.Value.phone != lastUserPhone).ToList();
 

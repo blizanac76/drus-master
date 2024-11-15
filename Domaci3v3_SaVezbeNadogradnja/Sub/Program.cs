@@ -17,7 +17,7 @@ namespace Sub
         public void MessageArrived2(string message, ServiceReference1.Korisnik k)
         {
             Console.WriteLine("MessageArrived2()");
-            // This should display the message correctly.
+            // ovi cw su vise za pracenje koda kroz rad
             if (message.Contains("Ne zelim da se vidimo"))
             {
                 Console.WriteLine($"{k.name} {k.surname} iz {k.city} kaze: {message}. Broj skriven.");
@@ -50,11 +50,14 @@ namespace Sub
             }
             else
             {
+                //novi callback za korisnika preko kojeg se salju nazad informacije
                 Console.WriteLine("Pravljenje novog Instance Context");
                 InstanceContext ic = new InstanceContext(new Callback());
                 Console.WriteLine("Pravljenje novog subclient");
+                //novi subclient za ser referencu
                 var subClient = new ServiceReference1.SubClient(ic);
                 // subClient.InitSub()
+                //unicijalizacija novog korisniak
                 Console.WriteLine("Korisnikove informacije idu u initsingle person");
                 subClient.InitSinglePerson(name, surname, city, phone, x);
                 Console.ReadLine();

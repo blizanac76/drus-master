@@ -11,11 +11,13 @@ namespace PubSubApp
     [ServiceContract]
     public interface IPub
     {
+        //metode sa 2 na kraju su moje
         [OperationContract(IsOneWay =true)]
         void SendMessage(string message);
+        //salje poruku
         [OperationContract(IsOneWay = true)]
         void SendMessage2(string message, Korisnik k);
-
+        //random korisnik ce slati poruku i svoje podatke nekom drugom korisniku
         [OperationContract]
         Korisnik GetRandomUser(string currentUser);
     }
@@ -24,6 +26,7 @@ namespace PubSubApp
     {
         [OperationContract(IsOneWay =true)]
         void InitSub(string username, string password);
+        //inicijalizacija korisnika
         [OperationContract(IsOneWay = true)]
         void InitSinglePerson(string name, string surname, string city, string phone, int age);
     }
@@ -31,10 +34,12 @@ namespace PubSubApp
     {
         [OperationContract(IsOneWay =true)]
         void MessageArrived(string message);
+        //callback nazad da je stigla poruka
 
         [OperationContract(IsOneWay = true)]
         void MessageArrived2(string message, Korisnik k);
     }
+    //struktura za serijalizaciju, korisnik 
     [DataContract]
     public class Korisnik
     {

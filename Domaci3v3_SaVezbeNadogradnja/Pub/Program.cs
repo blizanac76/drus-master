@@ -18,6 +18,7 @@ namespace Pub
 
             while (true)
             {
+                //za test samo
                 var currentUser = "mladen";
 
                 // random korisnik sa servera
