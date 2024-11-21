@@ -6,9 +6,9 @@ Linear Congruential Generatori (LCGs) su popularni generatori pseudonasumicnih b
 
 - ## Formula
 
-  \[
-  X_{n+1} = (a \cdot X_n + c) \mod m
-  \]
+  
+  X_{n+1} = (a * X_n + c) \mod m
+  
 
   Gde su:
 
@@ -60,21 +60,22 @@ je davao sledecu raspodelu:
 
 
 
-![LCG_og](M:\Fakultet\Zaric\D1\drus-master\Domaci4\LCG_og.png)
+![LCG_og](LCG_og.png)
 
 U kojoj se vidi da je zadovoljena osnovna potreba za uniformnom raspodelom. Ukoliko se zamenio modul za deljenje (Program_upgrade.cs), da bude zasnovan na milisekundama pokretanja programa cime bi se poboljsala nasumicnost generisanja brojeva nova raspodela bi izgledala ovako:
 
-![LCG_v2](M:\Fakultet\Zaric\D1\drus-master\Domaci4\LCG_v2.png)
+![LCG_v2](LCG_v2.png)
 
 Kada bi se na to dodali da c bude zavistan u odnosu na broj procesa koji racunar koji pokrece program trenutno ima, plot bi izgledao ovako nekako:
 
-![LCG_v2_1](M:\Fakultet\Zaric\D1\drus-master\Domaci4\LCG_v2_1.png)
+
+![LCG izmenjen](LCG_v2_1.png)
 
 Iako je urusena uniformna raspodela originalnog LCG-a, "unapredjeni" random number generator donosi vecu nesigurnost kod biranja brojeva, ali smanjuje raspodelu da ce se svaki broj jednako birati. Uzevsi u obzir da je opseg izuzetno velik, a moze se i prosiriti ovo narusavanje raspodele nema toliko drastican uticaj. 
 
 Na kraju, ukoliko bi se koristio originalan pristup generisanju RNG-a pomocu broja trenutnih procesa (koji je za svaku masinu koja pokrece kod zaseban) i preciznog vremena izvrsavanja programa, a uz pomoc kombinacije XOR operacije nad bitima generisanih brojeva mogao bi se dobiti primitivni generator:
 
-![Figure_v3](M:\Fakultet\Zaric\D1\drus-master\Domaci4\Figure_v3.png)
+![Figure_v3](Figure_v3.png)
 
 Ovaj RNG generise 10 brojeva u opsegu od 2 do 11, a modifikovanjem dodatnog dela u kodu gde se getXOR() operaciji dodaje 2
 ```
