@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ConsoleApp1.Program_upgrade</StartupObject>
+    <StartupObject>ConsoleApp1.Original_RNG</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -82,6 +82,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Original_RNG.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Program_upgrade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

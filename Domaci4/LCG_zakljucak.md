@@ -2,6 +2,22 @@
 
 Linear Congruential Generatori (LCGs) su popularni generatori pseudonasumicnih brojeva koji koriste jednostavne matematicke operacije, poput modula pri deljenju za generisanje random brojeva. Iako su LCG-ovi efikasni i lako implementirani, oni imaju znacajne slabosti zbog kojih se retko koriste u sigurnosnim sistemima i kod sifrovanja poruka, ili kriptografiji.
 
+
+
+- ## Formula
+
+  \[
+  X_{n+1} = (a \cdot X_n + c) \mod m
+  \]
+
+  Gde su:
+
+  - **\(X_{n+1}\)**: sledeci pseudo-slucajni broj u sekvenci
+  - **\(X_n\)**: trenutni broj u sekvenci (početna vrednost \(X_0\) naziva  seed).  
+  - **\(a\)**: **Multiplikator** (obicno veliki prost broj).  
+  - **\(c\)**: **Aditivna konstanta** (cesto neparan broj).  
+  - **\(m\)**: **Moduo** (maksimalna vrednost niza, obicno veliki stepen broja 2).
+
 ## Glavne slabosti LCG
 
 ### 1. 
@@ -55,6 +71,23 @@ Kada bi se na to dodali da c bude zavistan u odnosu na broj procesa koji racunar
 ![LCG_v2_1](M:\Fakultet\Zaric\D1\drus-master\Domaci4\LCG_v2_1.png)
 
 Iako je urusena uniformna raspodela originalnog LCG-a, "unapredjeni" random number generator donosi vecu nesigurnost kod biranja brojeva, ali smanjuje raspodelu da ce se svaki broj jednako birati. Uzevsi u obzir da je opseg izuzetno velik, a moze se i prosiriti ovo narusavanje raspodele nema toliko drastican uticaj. 
+
+Na kraju, ukoliko bi se koristio originalan pristup generisanju RNG-a pomocu broja trenutnih procesa (koji je za svaku masinu koja pokrece kod zaseban) i preciznog vremena izvrsavanja programa, a uz pomoc kombinacije XOR operacije nad bitima generisanih brojeva mogao bi se dobiti primitivni generator:
+
+![Figure_v3](M:\Fakultet\Zaric\D1\drus-master\Domaci4\Figure_v3.png)
+
+Ovaj RNG generise 10 brojeva u opsegu od 2 do 11, a modifikovanjem dodatnog dela u kodu gde se getXOR() operaciji dodaje 2
+```
+for (int i = 0; i < 20000; i++)
+{
+    int randombroj = getXOR()+2;
+    qwerty.WriteLine(randombroj);
+}
+```
+
+moze se centrirati u kom ce se opsegu nalaziti generisani brojevi (gde ce najveci biti za 9 veci od najmanjeg).
+
+Za generisanje grafika u cilju prikaza distribucije brojeva koriscen je main.py python kod koji je prikazivao niz brojeva zapisanih u txt fajl.
 
 ### Zakljucak
 

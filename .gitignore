@@ -23,6 +23,7 @@ ehthumbs.db
 
 # NuGet packages
 **/packages/
+packages/
 
 # Ignore Visual Studio Code settings
 .vscode/
