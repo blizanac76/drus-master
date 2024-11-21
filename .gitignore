@@ -21,6 +21,9 @@ mono_crash.*
 Thumbs.db
 ehthumbs.db
 
+# NuGet packages
+**/packages/
+
 # Ignore Visual Studio Code settings
 .vscode/
 .vs/
